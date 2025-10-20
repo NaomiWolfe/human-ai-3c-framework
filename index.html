@@ -5,132 +5,124 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>The 3C Framework – Human + AI Decision Collaboration | Prof. Naomi Latini Wolfe</title>
 <style>
-  :root {
-    --sea-blue:#2e8bc0;
-    --coastal-green:#64a388;
-    --sand:#f1efe5;
-    --deep-blue:#175676;
-    --light-panel:#ffffff;
-    --accent-yellow:#f6c667;
-  }
-  body{
-    font-family:"Segoe UI",Roboto,sans-serif;
-    background:linear-gradient(to bottom,#fdfdfd,#eaf2ef);
-    margin:0;padding:0;color:#1e1e1e;
-  }
-  header{
-    text-align:center;
-    padding:1.5rem;
-    color:var(--deep-blue);
-  }
-  header h1{margin:.2rem;font-size:1.8rem;}
-  header h2{margin:0;font-weight:400;color:#357;}
-  header a{color:#2e8bc0;text-decoration:none;}
-  main{
-    max-width:850px;
-    margin:1rem auto;
-    background:var(--light-panel);
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
-    padding:2rem;
-  }
-
-  /* Scenario cards grid */
-  .scenario-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    grid-auto-rows:auto;
-    gap:1rem;
-    margin-bottom:1.5rem;
-  }
-
-  /* Card design */
-  .card{
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:1rem;
-    cursor:pointer;
-    background:#fafafa;
-    transition:transform .25s ease, box-shadow .25s ease;
-    text-align:left;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    word-wrap:break-word;
-    overflow-wrap:break-word;
-    min-height:100px;
-  }
-  .card strong{
-    display:block;
-    font-size:1rem;
-    margin-bottom:0.3rem;
-  }
-  .card small{
-    line-height:1.2;
-    color:#444;
-  }
-  .card.active{
-    background:#e7f4ef;
-    border-color:var(--coastal-green);
-    box-shadow:0 0 0 3px var(--coastal-green);
-    transform:scale(1.03);
-  }
-  .card:hover{
-    background:#f5fdfb;
-    transform:scale(1.02);
-  }
-
-  h3{text-align:center;color:var(--deep-blue);margin-top:2rem;}
-  .slider-container{text-align:center;margin:1.5rem 0;}
-  input[type=range]{
-    width:100%;
-    margin-top:.8rem;
-    -webkit-appearance:none;
-    height:8px;
-    border-radius:5px;
-    background:linear-gradient(to right,var(--sea-blue),var(--coastal-green),var(--accent-yellow));
-    outline:none;
-  }
-  input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;
-    height:28px;width:28px;border-radius:50%;
-    background:var(--deep-blue);
-    border:2px solid #fff;
-    cursor:pointer;
-    transition:transform .2s;
-  }
-  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
-  .labels{
-    display:flex;
-    justify-content:space-between;
-    font-weight:600;
-    color:var(--deep-blue);
-  }
-
-  .feedback,.bias{
-    border-radius:8px;
-    padding:1rem;
-    margin-top:1rem;
-  }
-  .feedback{
-    background:#fff9e6;
-    border-left:5px solid var(--accent-yellow);
-  }
-  .bias{
-    background:#eef8f0;
-    border-left:5px solid var(--coastal-green);
-  }
-  footer{
-    text-align:center;
-    font-size:.8rem;
-    padding:1rem;
-    color:#555;
-  }
-
-  @media(max-width:600px){
-    main{padding:1rem;}
-    .card{min-height:auto;}
-  }
+:root{
+  --sea-blue:#2e8bc0;
+  --coastal-green:#64a388;
+  --sand:#f1efe5;
+  --deep-blue:#175676;
+  --light-panel:#ffffff;
+  --accent-yellow:#f6c667;
+}
+body{
+  font-family:"Segoe UI",Roboto,sans-serif;
+  background:linear-gradient(to bottom,#fdfdfd,#eaf2ef);
+  margin:0;
+  color:#1e1e1e;
+}
+header{
+  text-align:center;
+  padding:1.5rem;
+  color:var(--deep-blue);
+}
+header h1{margin:.2rem;font-size:1.8rem;}
+header h2{margin:0;font-weight:400;color:#357;}
+header a{color:var(--sea-blue);text-decoration:none;}
+main{
+  max-width:850px;
+  margin:1rem auto;
+  background:var(--light-panel);
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.1);
+  padding:2rem;
+}
+.scenario-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  grid-auto-rows:auto;
+  gap:1rem;
+  margin-bottom:1.5rem;
+}
+.card{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:1rem;
+  background:#fafafa;
+  cursor:pointer;
+  transition:transform .25s ease,box-shadow .25s ease;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  min-height:100px;
+}
+.card strong{
+  display:block;
+  font-size:1rem;
+  margin-bottom:0.3rem;
+}
+.card small{line-height:1.2;color:#444;}
+.card.active{
+  background:#e7f4ef;
+  border-color:var(--coastal-green);
+  box-shadow:0 0 0 3px var(--coastal-green);
+  transform:scale(1.03);
+}
+.card:hover{
+  background:#f5fdfb;
+  transform:scale(1.02);
+}
+h3{text-align:center;color:var(--deep-blue);margin-top:2rem;}
+.slider-container{text-align:center;margin:1.5rem 0;}
+input[type=range]{
+  width:100%;
+  margin-top:.8rem;
+  -webkit-appearance:none;
+  height:8px;
+  border-radius:5px;
+  background:linear-gradient(to right,var(--sea-blue),var(--coastal-green),var(--accent-yellow));
+  outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  height:28px;width:28px;border-radius:50%;
+  background:var(--deep-blue);
+  border:2px solid #fff;
+  cursor:pointer;
+  transition:transform .2s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
+.labels{
+  display:flex;
+  justify-content:space-between;
+  font-weight:600;
+  color:var(--deep-blue);
+}
+.feedback,.bias{
+  border-radius:8px;
+  padding:1rem;
+  margin-top:1rem;
+  transition:opacity .4s ease;
+}
+.feedback{
+  background:#fff9e6;
+  border-left:5px solid var(--accent-yellow);
+}
+.bias{
+  background:#eef8f0;
+  border-left:5px solid var(--coastal-green);
+}
+footer{
+  text-align:center;
+  font-size:.8rem;
+  padding:1rem;
+  color:#555;
+}
+@media(max-width:600px){
+  main{padding:1rem;}
+  .card{min-height:auto;}
+}
 </style>
 </head>
 <body>
@@ -192,23 +184,24 @@
 </footer>
 
 <script>
-<script>
-const slider=document.getElementById('slider');
-const modeTitle=document.getElementById('modeTitle');
-const modeText=document.getElementById('modeText');
-const feedbackBox=document.getElementById('feedbackBox');
-const biasBox=document.getElementById('biasBox');
-const cards=document.querySelectorAll('.card');
+document.addEventListener("DOMContentLoaded",()=>{
+
+const slider=document.getElementById("slider");
+const modeTitle=document.getElementById("modeTitle");
+const modeText=document.getElementById("modeText");
+const feedbackBox=document.getElementById("feedbackBox");
+const biasBox=document.getElementById("biasBox");
+const cards=document.querySelectorAll(".card");
 let currentScenario="Medical diagnosis";
 
-/* ---- Bias & Mode definitions ---- */
+/* ----- MODES ----- */
 const modes=[
   {name:"Consult",desc:"AI acts as advisor; human decides."},
   {name:"Collaborate",desc:"Shared decision; human + AI iterate together."},
   {name:"Control",desc:"AI autonomy; human defines boundaries and monitors."}
 ];
 
-/* ---- Context feedback messages ---- */
+/* ----- FEEDBACK MESSAGES ----- */
 const contextMessages={
   "Medical diagnosis":[
     "Medical decisions carry high stakes; AI should only advise.",
@@ -237,49 +230,36 @@ const contextMessages={
   ]
 };
 
-/* ---- Bias insights by scenario and mode ---- */
+/* ----- UNIQUE BIAS INSIGHTS ----- */
 const biasMessages={
   "Medical diagnosis":[
-    ["Automation Bias","Humans may over‑trust AI recommendations, assuming they’re more accurate than they are."],
-    ["Anchoring Bias","Clinicians might rely too heavily on AI’s first suggestion, overlooking alternative diagnoses."],
-    ["Accountability Drift","Full automation blurs responsibility when adverse outcomes occur."]
+    ["Automation Bias","Humans may over‑trust AI recommendations."],
+    ["Anchoring Bias","Clinicians may rely too heavily on AI’s first suggestion."],
+    ["Accountability Drift","Full automation blurs responsibility when outcomes occur."]
   ],
   "Financial planning":[
-    ["Optimism Bias","Investors might over‑rely on AI’s growth predictions."],
-    ["Confirmation Bias","Advisors may choose AI forecasts matching their preferred strategies."],
-    ["Risk Aversion Shift","Automation can lower human caution in volatile markets."]
+    ["Optimism Bias","Investors might over‑rely on AI growth predictions."],
+    ["Confirmation Bias","Advisors may prefer AI data that fits expectations."],
+    ["Risk Shift","Automation can lower human caution in volatile markets."]
   ],
   "Classroom grading":[
-    ["Automation Bias","Teachers may assume AI grades are always objective."],
-    ["Framing Bias","If the AI rubric emphasizes keywords, nuanced creativity can be penalized."],
-    ["Delegation Bias","Teachers might hesitate to override an AI score once automation is high."]
+    ["Automation Bias","Teachers may assume AI grades are objective."],
+    ["Framing Bias","Keyword‑based rubrics can miss creativity."],
+    ["Delegation Bias","Teachers might hesitate to override AI scores."]
   ],
   "Creative writing assistant":[
-    ["Creativity Bias","AI suggestions may homogenize style, reducing originality."],
-    ["Echo Bias","Writers might prefer AI ideas that repeat familiar tropes."],
-    ["Ownership Drift","As AI output dominates, authorship and credit become ambiguous."]
+    ["Creativity Bias","AI suggestions may homogenize style and reduce originality."],
+    ["Echo Bias","Writers might pick AI ideas repeating clichés."],
+    ["Ownership Drift","When AI generates most text, authorship blurs."]
   ],
   "Warehouse robotics":[
-    ["Overreliance Bias","Operators may ignore sensor anomalies trusting AI too much."],
-    ["Normalization Bias","Repetitive collaboration can mask gradual safety issues."],
-    ["Algorithmic Bias","Uneven training data may favor certain workflows over others."]
+    ["Overreliance Bias","Operators may ignore anomalies trusting AI too much."],
+    ["Normalization Bias","Routine collaboration can hide safety issues."],
+    ["Algorithmic Bias","Training data may favor certain workflows."]
   ]
 };
 
-/* ---- Handle scenario clicks ---- */
-cards.forEach(card=>{
-  card.addEventListener('click',()=>{
-    cards.forEach(c=>c.classList.remove('active'));
-    card.classList.add('active');
-    currentScenario=card.dataset.scenario;
-    updateDisplay();
-  });
-});
-
-/* ---- Handle slider movement ---- */
-slider.addEventListener('input',updateDisplay);
-
-/* ---- Core updater ---- */
+/* ----- FUNCTIONS ----- */
 function updateDisplay(){
   const value=parseInt(slider.value);
   const mode=modes[value];
@@ -287,18 +267,35 @@ function updateDisplay(){
   modeText.textContent=mode.desc;
 
   const feedback=contextMessages[currentScenario][value];
-  const biasInfo=biasMessages[currentScenario][value];
+  const bias=biasMessages[currentScenario][value];
 
-  feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${feedback}</p>`;
-  biasBox.innerHTML=`<strong>Bias Insight – ${biasInfo[0]}:</strong><p>${biasInfo[1]}</p>`;
+  feedbackBox.style.opacity=0;
+  biasBox.style.opacity=0;
+  setTimeout(()=>{
+    feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${feedback}</p>`;
+    biasBox.innerHTML=`<strong>Bias Insight – ${bias[0]}:</strong><p>${bias[1]}</p>`;
+    feedbackBox.style.opacity=1;
+    biasBox.style.opacity=1;
+  },200);
 }
 
 function capitalize(str){return str.charAt(0).toUpperCase()+str.slice(1);}
 
-// initialize view
+/* ----- EVENT LISTENERS ----- */
+slider.addEventListener("input",updateDisplay);
+cards.forEach(card=>{
+  card.addEventListener("click",()=>{
+    cards.forEach(c=>c.classList.remove("active"));
+    card.classList.add("active");
+    currentScenario=card.dataset.scenario;
+    updateDisplay();
+  });
+});
+
+/* initialize */
 updateDisplay();
-</script>
+
+});
 </script>
 </body>
 </html>
-
