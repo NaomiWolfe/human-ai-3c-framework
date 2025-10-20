@@ -137,61 +137,62 @@ const cards=document.querySelectorAll('.card');
 let currentScenario="Medical diagnosis";
 
 const modes=[
-  {name:"Consult",desc:"AI acts as advisor; human decides.",biasTitle:"Automation Bias",biasDesc:"Humans may over‑trust AI recommendations, assuming they’re more accurate than they are."},
-  {name:"Collaborate",desc:"Shared decision; human + AI iterate together.",biasTitle:"Confirmation Bias",biasDesc:"In collaboration, humans may favor AI suggestions that match their thinking and ignore alternatives."},
-  {name:"Control",desc:"AI autonomy; human defines boundaries and monitors.",biasTitle:"Algorithmic Bias & Accountability Drift",biasDesc:"When AI controls decisions, biases in training data can propagate without human checks."}
+  {name:"Consult",desc:"AI acts as advisor; human decides.",biasTitle:"Automation Bias",biasDesc:"Humans may over‑trust AI recommendations, assuming they’re more accurate than they are."},
+  {name:"Collaborate",desc:"Shared decision; human + AI iterate together.",biasTitle:"Confirmation Bias",biasDesc:"In collaboration, humans may favor AI suggestions that match their thinking and ignore alternatives."},
+  {name:"Control",desc:"AI autonomy; human defines boundaries and monitors.",biasTitle:"Algorithmic Bias & Accountability Drift",biasDesc:"When AI controls decisions, biases in training data can propagate without human checks."}
 ];
 
 const contextMessages={
   "Medical diagnosis":[
-    "Medical decisions carry high stakes; AI should only advise.",
-    "Shared AI–human reviews can improve accuracy and ethics.",
-    "Full automation is not advised in high‑risk clinical contexts."
+    "Medical decisions carry high stakes; AI should only advise.",
+    "Shared AI–human reviews can improve accuracy and ethics.",
+    "Full automation is not advised in high‑risk clinical contexts."
   ],
   "Financial planning":[
-    "Consult mode preferred for ethical and compliance reasons.",
-    "Collaborate to blend AI forecasts + human risk judgment.",
-    "Routine low‑risk plans can allow greater AI control."
+    "Consult mode preferred for ethical and compliance reasons.",
+    "Collaborate to blend AI forecasts + human risk judgment.",
+    "Routine low‑risk plans can allow greater AI control."
   ],
   "Classroom grading":[
-    "Consult = AI feedback only – keep teacher authority.",
-    "Collaborate = teacher reviews AI rubric suggestions.",
-    "Control = not recommended for qualitative work."
+    "Consult = AI feedback only – keep teacher authority.",
+    "Collaborate = teacher reviews AI rubric suggestions.",
+    "Control = not recommended for qualitative work."
   ],
   "Creative writing assistant":[
-    "Consult = AI suggests phrases or ideas.",
+    "Consult = AI suggests phrases or ideas.",
     "Collaborate = co‑write together synergistically.",
-    "Control = AI generates drafts autonomously."
+    "Control = AI generates drafts autonomously."
   ],
   "Warehouse robotics":[
-    "Consult = use AI for planning optimization review.",
-    "Collaborate = joint human–machine oversight.",
-    "Control = safe automation for low risk tasks."
+    "Consult = use AI for planning optimization review.",
+    "Collaborate = joint human–machine oversight.",
+    "Control = safe automation for low‑risk tasks."
   ]
 };
 
+// When you click a scenario card
 cards.forEach(card=>{
   card.addEventListener('click',()=>{
     cards.forEach(c=>c.classList.remove('active'));
     card.classList.add('active');
     currentScenario=card.dataset.scenario;
-    updateDisplay();
+    updateDisplay();   // 🔄 ensures feedback & bias both refresh instantly
   });
 });
 
+// When you move the slider
 slider.addEventListener('input',updateDisplay);
 
+// Core display update
 function updateDisplay(){
   const value=parseInt(slider.value);
   const mode=modes[value];
   modeTitle.textContent=`${mode.name} Mode`;
   modeText.textContent=mode.desc;
   const msg=contextMessages[currentScenario][value];
-  feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${msg}</p>`;
-  biasBox.innerHTML=`<strong>Bias Insight – ${mode.biasTitle}:</strong><p>${mode.biasDesc}</p>`;
+  feedbackBox.innerHTML = `<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${msg}</p>`;
+  biasBox.innerHTML = `<strong>Bias Insight – ${mode.biasTitle}:</strong><p>${mode.biasDesc}</p>`;
 }
 
 function capitalize(str){return str.charAt(0).toUpperCase()+str.slice(1);}
 </script>
-</body>
-</html>
