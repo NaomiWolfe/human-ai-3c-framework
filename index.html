@@ -192,6 +192,7 @@
 </footer>
 
 <script>
+<script>
 const slider=document.getElementById('slider');
 const modeTitle=document.getElementById('modeTitle');
 const modeText=document.getElementById('modeText');
@@ -200,12 +201,14 @@ const biasBox=document.getElementById('biasBox');
 const cards=document.querySelectorAll('.card');
 let currentScenario="Medical diagnosis";
 
+/* ---- Bias & Mode definitions ---- */
 const modes=[
-  {name:"Consult",desc:"AI acts as advisor; human decides.",biasTitle:"Automation Bias",biasDesc:"Humans may over‑trust AI recommendations, assuming they’re more accurate than they are."},
-  {name:"Collaborate",desc:"Shared decision; human + AI iterate together.",biasTitle:"Confirmation Bias",biasDesc:"In collaboration, humans may favor AI suggestions that match their thinking and ignore alternatives."},
-  {name:"Control",desc:"AI autonomy; human defines boundaries and monitors.",biasTitle:"Algorithmic Bias & Accountability Drift",biasDesc:"When AI controls decisions, biases in training data can propagate without human checks."}
+  {name:"Consult",desc:"AI acts as advisor; human decides."},
+  {name:"Collaborate",desc:"Shared decision; human + AI iterate together."},
+  {name:"Control",desc:"AI autonomy; human defines boundaries and monitors."}
 ];
 
+/* ---- Context feedback messages ---- */
 const contextMessages={
   "Medical diagnosis":[
     "Medical decisions carry high stakes; AI should only advise.",
@@ -234,7 +237,36 @@ const contextMessages={
   ]
 };
 
-// handle scenario change
+/* ---- Bias insights by scenario and mode ---- */
+const biasMessages={
+  "Medical diagnosis":[
+    ["Automation Bias","Humans may over‑trust AI recommendations, assuming they’re more accurate than they are."],
+    ["Anchoring Bias","Clinicians might rely too heavily on AI’s first suggestion, overlooking alternative diagnoses."],
+    ["Accountability Drift","Full automation blurs responsibility when adverse outcomes occur."]
+  ],
+  "Financial planning":[
+    ["Optimism Bias","Investors might over‑rely on AI’s growth predictions."],
+    ["Confirmation Bias","Advisors may choose AI forecasts matching their preferred strategies."],
+    ["Risk Aversion Shift","Automation can lower human caution in volatile markets."]
+  ],
+  "Classroom grading":[
+    ["Automation Bias","Teachers may assume AI grades are always objective."],
+    ["Framing Bias","If the AI rubric emphasizes keywords, nuanced creativity can be penalized."],
+    ["Delegation Bias","Teachers might hesitate to override an AI score once automation is high."]
+  ],
+  "Creative writing assistant":[
+    ["Creativity Bias","AI suggestions may homogenize style, reducing originality."],
+    ["Echo Bias","Writers might prefer AI ideas that repeat familiar tropes."],
+    ["Ownership Drift","As AI output dominates, authorship and credit become ambiguous."]
+  ],
+  "Warehouse robotics":[
+    ["Overreliance Bias","Operators may ignore sensor anomalies trusting AI too much."],
+    ["Normalization Bias","Repetitive collaboration can mask gradual safety issues."],
+    ["Algorithmic Bias","Uneven training data may favor certain workflows over others."]
+  ]
+};
+
+/* ---- Handle scenario clicks ---- */
 cards.forEach(card=>{
   card.addEventListener('click',()=>{
     cards.forEach(c=>c.classList.remove('active'));
@@ -244,21 +276,29 @@ cards.forEach(card=>{
   });
 });
 
-// handle slider movement
+/* ---- Handle slider movement ---- */
 slider.addEventListener('input',updateDisplay);
 
-// update display content
+/* ---- Core updater ---- */
 function updateDisplay(){
   const value=parseInt(slider.value);
   const mode=modes[value];
   modeTitle.textContent=`${mode.name} Mode`;
   modeText.textContent=mode.desc;
-  const msg=contextMessages[currentScenario][value];
-  feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${msg}</p>`;
-  biasBox.innerHTML=`<strong>Bias Insight – ${mode.biasTitle}:</strong><p>${mode.biasDesc}</p>`;
+
+  const feedback=contextMessages[currentScenario][value];
+  const biasInfo=biasMessages[currentScenario][value];
+
+  feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${feedback}</p>`;
+  biasBox.innerHTML=`<strong>Bias Insight – ${biasInfo[0]}:</strong><p>${biasInfo[1]}</p>`;
 }
 
 function capitalize(str){return str.charAt(0).toUpperCase()+str.slice(1);}
+
+// initialize view
+updateDisplay();
+</script>
 </script>
 </body>
 </html>
+
