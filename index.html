@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The 3C Framework – Human + AI Decision Collaboration | Prof. Naomi Latini Wolfe</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>The 3C Framework – Human + AI Decision Collaboration | Prof. Naomi Latini Wolfe</title>
 <style>
   :root {
     --sea-blue:#2e8bc0;
@@ -34,30 +34,59 @@
     box-shadow:0 3px 10px rgba(0,0,0,.1);
     padding:2rem;
   }
+
+  /* Scenario cards grid */
   .scenario-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-auto-rows:auto;
     gap:1rem;
     margin-bottom:1.5rem;
   }
+
+  /* Card design */
   .card{
     border:1px solid #ddd;
     border-radius:10px;
     padding:1rem;
     cursor:pointer;
     background:#fafafa;
-    transition:.3s;
+    transition:transform .25s ease, box-shadow .25s ease;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+    min-height:100px;
+  }
+  .card strong{
+    display:block;
+    font-size:1rem;
+    margin-bottom:0.3rem;
+  }
+  .card small{
+    line-height:1.2;
+    color:#444;
   }
   .card.active{
     background:#e7f4ef;
     border-color:var(--coastal-green);
-    box-shadow:0 0 0 2px var(--coastal-green);
+    box-shadow:0 0 0 3px var(--coastal-green);
+    transform:scale(1.03);
   }
-  .card:hover{background:#f5fdfb;}
+  .card:hover{
+    background:#f5fdfb;
+    transform:scale(1.02);
+  }
+
   h3{text-align:center;color:var(--deep-blue);margin-top:2rem;}
   .slider-container{text-align:center;margin:1.5rem 0;}
   input[type=range]{
-    width:100%;margin-top:.8rem;-webkit-appearance:none;height:8px;
+    width:100%;
+    margin-top:.8rem;
+    -webkit-appearance:none;
+    height:8px;
     border-radius:5px;
     background:linear-gradient(to right,var(--sea-blue),var(--coastal-green),var(--accent-yellow));
     outline:none;
@@ -66,23 +95,42 @@
     -webkit-appearance:none;
     height:28px;width:28px;border-radius:50%;
     background:var(--deep-blue);
-    border:2px solid #fff;cursor:pointer;transition:.3s;
+    border:2px solid #fff;
+    cursor:pointer;
+    transition:transform .2s;
   }
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15);}
   .labels{
-    display:flex;justify-content:space-between;
-    font-weight:600;color:var(--deep-blue);
+    display:flex;
+    justify-content:space-between;
+    font-weight:600;
+    color:var(--deep-blue);
   }
+
   .feedback,.bias{
-    border-radius:8px;padding:1rem;margin-top:1rem;
+    border-radius:8px;
+    padding:1rem;
+    margin-top:1rem;
   }
   .feedback{
-    background:#fff9e6;border-left:5px solid var(--accent-yellow);
+    background:#fff9e6;
+    border-left:5px solid var(--accent-yellow);
   }
   .bias{
-    background:#eef8f0;border-left:5px solid var(--coastal-green);
+    background:#eef8f0;
+    border-left:5px solid var(--coastal-green);
   }
-  footer{text-align:center;font-size:.8rem;padding:1rem;color:#555;}
-  @media(max-width:600px){main{padding:1rem;}}
+  footer{
+    text-align:center;
+    font-size:.8rem;
+    padding:1rem;
+    color:#555;
+  }
+
+  @media(max-width:600px){
+    main{padding:1rem;}
+    .card{min-height:auto;}
+  }
 </style>
 </head>
 <body>
@@ -90,17 +138,33 @@
 <header>
   <h1>🌿 The 3C Framework</h1>
   <h2>Exploring Human + AI Decision Collaboration</h2>
-  <p>Designed by Prof. Naomi Latini Wolfe – <a href="https://www.naomilatiniwolfe.com" target="_blank">naomilatiniwolfe.com</a></p>
+  <p>Designed by Prof. Naomi Latini Wolfe – 
+  <a href="https://www.naomilatiniwolfe.com" target="_blank">naomilatiniwolfe.com</a></p>
 </header>
 
 <main>
   <p style="text-align:center;font-weight:600;margin-top:0;">Select a Decision Scenario:</p>
   <div class="scenario-grid" id="scenarios">
-    <div class="card active" data-scenario="Medical diagnosis"><strong>Medical Diagnosis</strong><br><small>Analyzing symptoms & recommending treatment</small></div>
-    <div class="card" data-scenario="Financial planning"><strong>Financial Planning</strong><br><small>Creating personalized investment strategies</small></div>
-    <div class="card" data-scenario="Classroom grading"><strong>Classroom Grading</strong><br><small>Evaluating assignments & feedback</small></div>
-    <div class="card" data-scenario="Creative writing assistant"><strong>Creative Writing Assistant</strong><br><small>Generating ideas & refining text</small></div>
-    <div class="card" data-scenario="Warehouse robotics"><strong>Warehouse Robotics</strong><br><small>Optimizing inventory movement</small></div>
+    <div class="card active" data-scenario="Medical diagnosis">
+      <strong>Medical Diagnosis</strong>
+      <small>Analyzing symptoms & recommending treatment</small>
+    </div>
+    <div class="card" data-scenario="Financial planning">
+      <strong>Financial Planning</strong>
+      <small>Creating personalized investment strategies</small>
+    </div>
+    <div class="card" data-scenario="Classroom grading">
+      <strong>Classroom Grading</strong>
+      <small>Evaluating assignments & feedback</small>
+    </div>
+    <div class="card" data-scenario="Creative writing assistant">
+      <strong>Creative Writing Assistant</strong>
+      <small>Generating ideas & refining text</small>
+    </div>
+    <div class="card" data-scenario="Warehouse robotics">
+      <strong>Warehouse Robotics</strong>
+      <small>Optimizing inventory movement & logistics</small>
+    </div>
   </div>
 
   <h3 id="modeTitle">Consult Mode</h3>
@@ -155,44 +219,46 @@ const contextMessages={
   ],
   "Classroom grading":[
     "Consult = AI feedback only – keep teacher authority.",
-    "Collaborate = teacher reviews AI rubric suggestions.",
-    "Control = not recommended for qualitative work."
+    "Collaborate = teacher reviews AI rubric suggestions.",
+    "Control = not recommended for qualitative work."
   ],
   "Creative writing assistant":[
-    "Consult = AI suggests phrases or ideas.",
+    "Consult = AI suggests phrases or ideas.",
     "Collaborate = co‑write together synergistically.",
-    "Control = AI generates drafts autonomously."
+    "Control = AI generates drafts autonomously."
   ],
   "Warehouse robotics":[
-    "Consult = use AI for planning optimization review.",
-    "Collaborate = joint human–machine oversight.",
-    "Control = safe automation for low‑risk tasks."
+    "Consult = use AI for planning optimization review.",
+    "Collaborate = joint human–machine oversight.",
+    "Control = safe automation for low‑risk tasks."
   ]
 };
 
-// When you click a scenario card
+// handle scenario change
 cards.forEach(card=>{
   card.addEventListener('click',()=>{
     cards.forEach(c=>c.classList.remove('active'));
     card.classList.add('active');
     currentScenario=card.dataset.scenario;
-    updateDisplay();   // 🔄 ensures feedback & bias both refresh instantly
+    updateDisplay();
   });
 });
 
-// When you move the slider
+// handle slider movement
 slider.addEventListener('input',updateDisplay);
 
-// Core display update
+// update display content
 function updateDisplay(){
   const value=parseInt(slider.value);
   const mode=modes[value];
   modeTitle.textContent=`${mode.name} Mode`;
   modeText.textContent=mode.desc;
   const msg=contextMessages[currentScenario][value];
-  feedbackBox.innerHTML = `<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${msg}</p>`;
-  biasBox.innerHTML = `<strong>Bias Insight – ${mode.biasTitle}:</strong><p>${mode.biasDesc}</p>`;
+  feedbackBox.innerHTML=`<strong>Contextual Feedback – ${capitalize(currentScenario)}:</strong><p>${msg}</p>`;
+  biasBox.innerHTML=`<strong>Bias Insight – ${mode.biasTitle}:</strong><p>${mode.biasDesc}</p>`;
 }
 
 function capitalize(str){return str.charAt(0).toUpperCase()+str.slice(1);}
 </script>
+</body>
+</html>
