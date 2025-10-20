@@ -38,3 +38,17 @@ Users can choose a scenario and slide between these modes to see how **Contextua
 human-ai-3c-framework/
 ├── index.html        # Main interactive page
 └── README.md         # Project information (this file)
+🏷️ Version History
+v1.0 (2025‑10‑20) – Initial public release on GitHub Pages
+Functional slider logic and bias insights
+Responsive design and accessibility improvements
+📜 Attribution
+Designed and authored by Prof. Naomi Latini Wolfe, Ph.D.
+© 2025 Naomi Latini Wolfe. All rights reserved.
+
+For classroom or educational reuse, please credit the creator.
+
+📫 Contact
+Website: naomilatiniwolfe.com
+GitHub: @naomiwolfe
+sql_more
